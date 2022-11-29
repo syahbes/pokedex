@@ -1,0 +1,10 @@
+8:10 AM 11/29/2022
+
+Pokedex
+
+Combaine infinate scroll - flat list lazy loading 800 pokemon
+flat list touchebale opacity
+
+styled search-box
+
+react navigation to open new Pokemon page
