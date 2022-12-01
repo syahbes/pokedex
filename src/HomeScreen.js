@@ -1,28 +1,57 @@
-import { TouchableOpacity, Button, View, TextInput, StyleSheet, FlatList, SafeAreaView } from 'react-native';
+import { TouchableOpacity, View, FlatList, SafeAreaView, ActivityIndicator, StyleSheet } from 'react-native';
 import { useState } from 'react';
+import { Searchbar } from 'react-native-paper';
 import Data from '../public/pokemon.json';
 import Item from './Item'
 
+
 const HomeScreen = ({ navigation }) => {
-    const [text, setText] = useState("")
-    const [sliceView, setSliceView] = useState(10)
+    const [isLoading, setIsLoading] = useState(true);
 
-    const onChangeText = (e) => {
-        setText(e)
-        console.log(e)
+    const renderLoader = () => {
+        return (
+            isLoading ?
+                <View style={styles.loaderStyle}>
+                    <ActivityIndicator size="large" color="#aaa" />
+                </View> : null
+        );
+    };
+
+    const loadMoreItem = () => {
+        setIsLoading(true)
+        setSliceView(prev => prev + 10)
+        setFilteredList(Data.slice(0, sliceView + 10))
     }
-    DataView = Data.slice(0, sliceView)
 
+    const [sliceView, setSliceView] = useState(10)
+    const [filteredList, setFilteredList] = useState(Data.slice(0, sliceView))
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const onChangeSearch = query => {
+        setSearchQuery(query);
+        setIsLoading(false)
+        setFilteredList(
+            Data
+                .filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
+                .slice(0, 20)
+        )
+    }
     return (
-        <SafeAreaView>
-            <View>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText}
-                    value={text}
+        <SafeAreaView style={{
+            flex: 1,
+        }}>
+            <View style={{
+                flex: 1,
+            }}>
+                <Searchbar
+                    placeholder="Search for Pokemon"
+                    onChangeText={onChangeSearch}
+                    value={searchQuery}
+                    style={{ marginBottom: 5 }}
                 />
                 <FlatList
-                    data={DataView}
+                
+                    data={filteredList}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) =>
                         <TouchableOpacity onPress={() =>
@@ -31,19 +60,24 @@ const HomeScreen = ({ navigation }) => {
                             <Item item={item} />
                         </TouchableOpacity>
                     }
+                    onEndReached={(distance) => {
+                        // console.log(distance);
+                        if (!searchQuery) { loadMoreItem() }
+                    }}
+                    onEndReachedThreshold={0.02}
+                    ListFooterComponent={renderLoader}
+
                 />
-                
             </View>
-         </SafeAreaView>
+        </SafeAreaView>
     );
 }
+
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
+    loaderStyle: {
+        marginVertical: 16,
+        alignItems: "center",
     },
-});
+})
 
 export default HomeScreen
