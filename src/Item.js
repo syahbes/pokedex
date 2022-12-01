@@ -20,7 +20,7 @@ const Item = ({ item }) => (
       backgroundColor: "#30373A",
       width: "100%",
       padding: 10,
-      border: "2px solid #FFC0CB",
+      // border: "2px solid #FFC0CB",
     },
     text: {
       color: "#fff",

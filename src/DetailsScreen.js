@@ -48,7 +48,7 @@ const DetailsScreen = ({ route, navigation }) => {
         }}>
         {/* name + type(dynamic bg) */}
         <View style={styles.pokeHeader}>
-          <Text variant='displaySmall'>{name}</Text>
+          <Text variant='displaySmall' style={{marginRight:15}}>{name}</Text>
           <View style={[styles.pokeTypeContainer, { backgroundColor: `${TypeColorMap[type[0]]}` }]}>
             <Text variant='bodyLarge'>{type[0]}</Text>
           </View>
@@ -63,10 +63,10 @@ const DetailsScreen = ({ route, navigation }) => {
             }} />
         </View>
         <View style={styles.HPContainer}>
-          <Text variant='bodyLarge'>
+        <Text variant='bodyLarge' style={{marginBottom: 20}}>
             HP: {hpRate(hp)}
           </Text>
-          <Text variant='bodyLarge'>
+          <Text variant='bodyLarge' style={{marginBottom: 20}}>
             Attack: {attack}
           </Text>
           <Text variant='bodyLarge'>
@@ -81,12 +81,14 @@ const DetailsScreen = ({ route, navigation }) => {
             mode="contained"
             disabled={id == 1}
             onPress={() => navigation.navigate('Details', Data[id - 2])}
+            style={{marginRight:20}}
           />
           <IconButton
             title="Home"
             mode="contained"
             icon="home"
             onPress={() => navigation.navigate('Pokedex')}
+            style={{marginRight:20}}
           />
           <IconButton
             title="Next"
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 25,
+    // gap: 25,
   },
 
   pokeTypeContainer: {
@@ -122,16 +124,16 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     padding: 10,
-    gap: 25,
+    marginBottom: 30,
   },
   HPContainer: {
     padding: 10,
-    gap: 25,
+    // marginBottom: 20,
   },
   pokeButton: {
     position: 'absolute',
     flexDirection: 'row',
-    gap: 10,
+    // gap: 10,
     bottom: 30,
     left: 0,
     width: "100%",

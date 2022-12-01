@@ -1,9 +1,20 @@
-import { TouchableOpacity, View, FlatList, SafeAreaView, ActivityIndicator, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, FlatList, SafeAreaView, ActivityIndicator, StyleSheet, Platform } from 'react-native';
 import { useState } from 'react';
 import { Searchbar } from 'react-native-paper';
 import Data from '../public/pokemon.json';
 import Item from './Item'
 
+const FlatListItemSeparator = () => {
+    return (
+        <View
+            style={{
+                height: 1,
+                width: "100%",
+                backgroundColor: "#BB8FCE",
+            }}
+        />
+    );
+}
 
 const HomeScreen = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true);
@@ -50,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
                     style={{ marginBottom: 5 }}
                 />
                 <FlatList
-                
+                    ItemSeparatorComponent={FlatListItemSeparator}
                     data={filteredList}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) =>
