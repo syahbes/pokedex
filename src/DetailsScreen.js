@@ -3,6 +3,7 @@ import { View, SafeAreaView, StyleSheet, Image, } from 'react-native';
 import { Text, IconButton } from 'react-native-paper';
 import Data from '../public/pokemon.json';
 
+
 const TypeColorMap = {
   "Fire": "#ff3333",
   "Water": "#18AFF0",
@@ -34,6 +35,7 @@ const hpRate = (x) => {
 
 const DetailsScreen = ({ route, navigation }) => {
 
+  
   const { id, name, type, hp, attack, speed } = route.params
 
   return (
