@@ -1,7 +1,9 @@
 
-import { View, SafeAreaView, StyleSheet, Image, } from 'react-native';
-import { Text, IconButton } from 'react-native-paper';
+import { View, SafeAreaView, StyleSheet, Image,BackHandler } from 'react-native';
+import { Text, IconButton, Button } from 'react-native-paper';
 import Data from '../public/pokemon.json';
+
+import React, { useEffect } from "react";
 
 
 const TypeColorMap = {
@@ -34,9 +36,23 @@ const hpRate = (x) => {
 }
 
 const DetailsScreen = ({ route, navigation }) => {
-
-  
   const { id, name, type, hp, attack, speed } = route.params
+
+
+  useEffect(() => {
+    const backAction = () => {
+      // console.log("navigate back")
+      navigation.navigate('Pokedex')
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+    return () => backHandler.remove();
+  }, []);
+
 
   return (
     <SafeAreaView
@@ -77,28 +93,29 @@ const DetailsScreen = ({ route, navigation }) => {
         </View>
         <View style={styles.pokeButton}>
 
-          <IconButton
-            title="Back"
+          <Button
+            // title="Back"
             icon="arrow-left-bold"
             mode="contained"
             disabled={id == 1}
             onPress={() => navigation.navigate('Details', Data[id - 2])}
             style={{marginRight:20}}
-          />
-          <IconButton
-            title="Home"
+          >Previous</Button>
+          <Button
+            // title="Home"
             mode="contained"
             icon="home"
             onPress={() => navigation.navigate('Pokedex')}
             style={{marginRight:20}}
-          />
-          <IconButton
-            title="Next"
+          >Home</Button>
+
+          <Button
+          contentStyle={{flexDirection: 'row-reverse'}}
             icon="arrow-right-bold"
             mode="contained"
             disabled={id == 809}
             onPress={() => navigation.navigate('Details', Data[id])}
-          />
+          >Next</Button>
 
 
         </View>
@@ -141,6 +158,7 @@ const styles = StyleSheet.create({
     width: "100%",
     // backgroundColor: "#000",
     justifyContent: "center",
+    alignItems: "center",
   }
 })
 

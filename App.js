@@ -9,8 +9,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Pokedex">
-        <Stack.Screen name="Pokedex" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Pokedex" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Details" component={DetailsScreen} options={{ title: "Pokemon Details" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
