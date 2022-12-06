@@ -35,6 +35,8 @@ const TypeColorMap = {
 //   return hpArr.slice(y, y + 10)
 // }
 
+//this update this
+
 function heartDisplay(num) {
   // Divide the number by 10 to determine the number of filled hearts
   num = Math.floor(num / 10);
