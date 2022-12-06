@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Searchbar } from 'react-native-paper';
 import Data from '../public/pokemon.json';
 import Item from './Item'
+//testing
 
 const FlatListItemSeparator = () => {
     return (
