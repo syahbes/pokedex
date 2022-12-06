@@ -22,18 +22,43 @@ const TypeColorMap = {
   
 }
 
-const hpArr = [
-  "💖", "💖", "💖", "💖", "💖", "💖", "💖", "💖", "💖", "💖",
-  "🖤", "🖤", "🖤", "🖤", "🖤", "🖤", "🖤", "🖤", "🖤", "🖤",
-]
+// const hpArr = [
+//   "💖", "💖", "💖", "💖", "💖", "💖", "💖", "💖", "💖", "💖",
+//   "🖤", "🖤", "🖤", "🖤", "🖤", "🖤", "🖤", "🖤", "🖤", "🖤",
+// ]
 
-const hpRate = (x) => {
-  let y = 0
-  if (x > 99) { y = 10 }
-  else { y = x / 10 }
-  y = Math.floor(10 - y)
-  return hpArr.slice(y, y + 10)
+// const hpRate = (x) => {
+//   let y = 0
+//   if (x > 99) { y = 10 }
+//   else { y = x / 10 }
+//   y = Math.floor(10 - y)
+//   return hpArr.slice(y, y + 10)
+// }
+
+function heartDisplay(num) {
+  // Divide the number by 10 to determine the number of filled hearts
+  num = Math.floor(num / 10);
+
+  // Limit the number of hearts to a maximum of 10
+  num = Math.min(num, 10);
+
+  // Create an empty string to hold the result
+  let result = "";
+
+  // Add the specified number of filled hearts to the string
+  for (let i = 0; i < num; i++) {
+    result += "❤️";
+  }
+
+  // Add the remaining number of not-filled hearts to the string
+  for (let i = 0; i < 10 - num; i++) {
+    result += "🖤";
+  }
+
+  // Return the resulting string
+  return result;
 }
+
 
 const DetailsScreen = ({ route, navigation }) => {
   const { id, name, type, hp, attack, speed } = route.params
@@ -82,7 +107,8 @@ const DetailsScreen = ({ route, navigation }) => {
         </View>
         <View style={styles.HPContainer}>
         <Text variant='bodyLarge' style={{marginBottom: 20}}>
-            HP: {hpRate(hp)}
+            HP: {heartDisplay(hp)}
+            
           </Text>
           <Text variant='bodyLarge' style={{marginBottom: 20}}>
             Attack: {attack}
