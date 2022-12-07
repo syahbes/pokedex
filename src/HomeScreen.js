@@ -51,6 +51,7 @@ const HomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={{
             flex: 1,
+            marginTop: 30,
         }}>
             <View style={{
                 flex: 1,
