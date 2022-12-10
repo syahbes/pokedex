@@ -1,5 +1,6 @@
 
 import {  View, Text, StyleSheet, Image } from 'react-native';
+//test
 
 const Item = ({ item }) => (
     <View style={styles.item} id={item.id}>
