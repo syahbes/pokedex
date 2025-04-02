@@ -1,96 +1,196 @@
 .card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  width: 200px;
-  text-align: center;
+  position: relative;
 }
 
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cardHeader h2 {
+  margin: 0;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.favoriteButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.typesContainer {
+  margin-top: 10px;
+}
+
+.typesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+/* Pokemon type styles - keep your existing type styles and add any missing ones */
 .fire {
-  background-color: #f08080;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
+  background-color: #f08030;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
+
 .water {
-  background-color: #6896dd;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
+  background-color: #6890f0;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
-.bug {
-  background-color: #a8b820;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
+
+.grass {
+  background-color: #78c850;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
-.ghost {
-  background-color: #705898;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
-}
+
 .electric {
-  background-color: #f8d022;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
+  background-color: #f8d030;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
-.fairy {
-  background-color: #ee90ee;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
+
+.psychic {
+  background-color: #f85888;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
-.fighting {
-  background-color: #c03028;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
-}
-.flying {
-  background-color: #a8a8f8;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
-}
-.poison {
-  background-color: #a040a0;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
-}
-.rock {
-  background-color: #b8a038;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
-}
+
 .ice {
   background-color: #98d8d8;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
+
+.dragon {
+  background-color: #7038f8;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.dark {
+  background-color: #705848;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.fairy {
+  background-color: #ee99ac;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
 .normal {
   background-color: #a8a878;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.fighting {
+  background-color: #c03028;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.flying {
+  background-color: #a890f0;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.poison {
+  background-color: #a040a0;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.ground {
+  background-color: #e0c068;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.rock {
+  background-color: #b8a038;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.bug {
+  background-color: #a8b820;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.ghost {
+  background-color: #705898;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.steel {
+  background-color: #b8b8d0;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
